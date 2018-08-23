@@ -58,6 +58,6 @@ if(dust.protocol_chk(buffer)):
   print ("PM 10.0 : %s" % (data[dust.DUST_PM10_0_ATM]))
 
 else:
-  print ("data read err")
+  print ("data read Err")
 
 ser.close()
