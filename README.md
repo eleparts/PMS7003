@@ -41,7 +41,7 @@ UART =  '/dev/ttyAMA0' # UART 사용시
 #serial setting  
 ser = serial.Serial(UART, Speed, timeout  =  1)  
 ```
-``sudo puthon3 dust_chk.py``   
+``sudo python3 dust_chk.py``   
 위 명령어로 실행해 주시면 됩니다.
 
 
