@@ -23,7 +23,7 @@ PMS7003M : https://www.eleparts.co.kr/EPXHWJ6L
 ``if  __name__=='__main__':  `` 내부의  
 ``serial.Serial(UART, Speed, timeout  =  1) ``  
 UART 부분을 PMS7003의 연결방법에 맞게 수정한 뒤  
-``sudo puthon3 PMS7003.py``  
+``sudo python3 PMS7003.py``  
 위 명령어로 실행해 주시면 Terminal창에서 데이터를 받아볼 수 있습니다.  
 기본값 : UART = '/dev/ttyAMA0'  
 
