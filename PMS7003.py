@@ -1,8 +1,8 @@
 """
 * PMS7003 데이터 수신 프로그램
-* 수정 : 2018. 08. 14
+* 수정 : 2018. 08. 27
 * 제작 : eleparts 부설연구소
-* SW ver. 1.0.0
+* SW ver. 1.0.1
 
 참조
 파이썬 라이브러리
@@ -25,24 +25,24 @@ class PMS7003(object):
   PMS_7003_PROTOCOL_SIZE = 32
 
   # PMS7003 data list
-  HEADER_HIGH            = 0
-  HEADER_LOW             = 1
-  FRAME_LENGTH           = 2
-  DUST_PM1_0_CF1         = 3
-  DUST_PM2_5_CF1         = 4
-  DUST_PM10_0_CF1        = 5
-  DUST_PM1_0_ATM         = 6
-  DUST_PM2_5_ATM         = 7
-  DUST_PM10_0_ATM        = 8
-  DUST_AIR_0_3           = 9
-  DUST_AIR_0_5           = 10
-  DUST_AIR_1_0           = 11
-  DUST_AIR_2_5           = 12
-  DUST_AIR_5_0           = 13
-  DUST_AIR_10_0          = 14
-  RESERVEDF              = 15
-  RESERVEDB              = 16 
-  CHECKSUM               = 17
+  HEADER_HIGH            = 0  # 0x42
+  HEADER_LOW             = 1  # 0x4d
+  FRAME_LENGTH           = 2  # 2x13+2(data+check bytes) 
+  DUST_PM1_0_CF1         = 3  # PM1.0 concentration unit μ g/m3（CF=1，standard particle）
+  DUST_PM2_5_CF1         = 4  # PM2.5 concentration unit μ g/m3（CF=1，standard particle）
+  DUST_PM10_0_CF1        = 5  # PM10 concentration unit μ g/m3（CF=1，standard particle）
+  DUST_PM1_0_ATM         = 6  # PM1.0 concentration unit μ g/m3（under atmospheric environment）
+  DUST_PM2_5_ATM         = 7  # PM2.5 concentration unit μ g/m3（under atmospheric environment）
+  DUST_PM10_0_ATM        = 8  # PM10 concentration unit μ g/m3  (under atmospheric environment) 
+  DUST_AIR_0_3           = 9  # indicates the number of particles with diameter beyond 0.3 um in 0.1 L of air. 
+  DUST_AIR_0_5           = 10 # indicates the number of particles with diameter beyond 0.5 um in 0.1 L of air. 
+  DUST_AIR_1_0           = 11 # indicates the number of particles with diameter beyond 1.0 um in 0.1 L of air. 
+  DUST_AIR_2_5           = 12 # indicates the number of particles with diameter beyond 2.5 um in 0.1 L of air. 
+  DUST_AIR_5_0           = 13 # indicates the number of particles with diameter beyond 5.0 um in 0.1 L of air. 
+  DUST_AIR_10_0          = 14 # indicates the number of particles with diameter beyond 10 um in 0.1 L of air. 
+  RESERVEDF              = 15 # Data13 Reserved high 8 bits
+  RESERVEDB              = 16 # Data13 Reserved low 8 bits
+  CHECKSUM               = 17 # Checksum code
 
 
   # header check 
@@ -135,8 +135,11 @@ class PMS7003(object):
 
 
 # UART / USB Serial : 'dmesg | grep ttyUSB'
-USB = '/dev/ttyUSB0'
+USB0 = '/dev/ttyUSB0'
 UART = '/dev/ttyAMA0'
+
+# USE PORT
+SERIAL_PORT = UART
 
 # Baud Rate
 Speed = 9600
@@ -146,7 +149,7 @@ Speed = 9600
 if __name__=='__main__':
 
   #serial setting 
-  ser = serial.Serial(UART, Speed, timeout = 1)
+  ser = serial.Serial(SERIAL_PORT, Speed, timeout = 1)
 
   dust = PMS7003()
 

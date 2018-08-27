@@ -1,9 +1,9 @@
 """
 *******************************************
 * PMS7003 데이터 수신 프로그램 import 예제
-* 수정 : 2018. 08. 22
+* 수정 : 2018. 08. 27
 * 제작 : eleparts 부설연구소
-* SW ver. 1.0.0
+* SW ver. 1.0.1
 *******************************************
 
 # unpack_data(buffer)
@@ -40,11 +40,14 @@ dust = PMS7003()
 Speed = 9600
 
 # UART / USB Serial
-USB = '/dev/ttyUSB0'
+USB0 = '/dev/ttyUSB0'
 UART = '/dev/ttyAMA0'
+
+# USE PORT
+SERIAL_PORT = UART
  
 #serial setting
-ser = serial.Serial(UART, Speed, timeout = 1)
+ser = serial.Serial(SERIAL_PORT, Speed, timeout = 1)
 
 
 buffer = ser.read(1024)
