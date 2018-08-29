@@ -95,10 +95,13 @@ class PMS7003(object):
   # protocol check
   def protocol_chk(self, buffer):
     
-    if(self.header_chk(buffer) and self.protocol_size_chk(buffer) and self.chksum_chk(buffer)):
-      return True
-    else:
-      return False 
+    if(self.protocol_size_chk(buffer)):
+      
+      if(self.header_chk(buffer) and self.chksum_chk(buffer)):
+
+        return True
+
+    return False 
 
   # unpack data 
   # <Tuple (13 x unsigned short <H> + 2 x unsigned char <B> + unsigned short <H>)>
