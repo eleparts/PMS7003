@@ -11,10 +11,10 @@ PMS7003M : https://www.eleparts.co.kr/EPXHWJ6L
 ## 먼지센서 연결 방법
 
 - GPIO UART 사용하기  
-라즈베리파이 UART 활성화 및 사용법
+라즈베리파이 UART 활성화 및 사용법  
 https://blog.naver.com/elepartsblog/221345203230  
   
-- USB to UART (TTL) 변환케이블 사용하기   
+- USB to UART (TTL) 변환케이블 사용하기  
 USB to UART 변환케이블 사용법  
 https://blog.naver.com/elepartsblog/221347040698  
   
