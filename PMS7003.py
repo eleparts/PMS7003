@@ -1,8 +1,8 @@
 """
 * PMS7003 데이터 수신 프로그램
-* 수정 : 2018. 08. 27
+* 수정 : 2018. 11. 19
 * 제작 : eleparts 부설연구소
-* SW ver. 1.0.1
+* SW ver. 1.0.2
 
 참조
 파이썬 라이브러리
@@ -76,7 +76,7 @@ class PMS7003(object):
     
     chksum_buffer = buffer[30:self.PMS_7003_PROTOCOL_SIZE]
     chksum = struct.unpack('!H', chksum_buffer)
- 
+    
     if (chk_result == chksum[0]):
       return True
 
@@ -97,9 +97,17 @@ class PMS7003(object):
     
     if(self.protocol_size_chk(buffer)):
       
-      if(self.header_chk(buffer) and self.chksum_chk(buffer)):
-
-        return True
+      if(self.header_chk(buffer)):
+        
+        if(self.chksum_chk(buffer)):
+          
+          return True
+        else:
+          print("Chksum err")
+      else:
+        print("Header err")
+    else:
+      print("Protol size err")
 
     return False 
 
