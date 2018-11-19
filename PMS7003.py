@@ -107,7 +107,7 @@ class PMS7003(object):
       else:
         print("Header err")
     else:
-      print("Protol size err")
+      print("Protol err")
 
     return False 
 
