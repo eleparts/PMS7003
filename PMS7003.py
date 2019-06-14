@@ -4,7 +4,7 @@
 * 제작 : eleparts 부설연구소
 * SW ver. 1.0.2
 
-참조
+> 관련자료
 파이썬 라이브러리
 https://docs.python.org/3/library/struct.html
 
