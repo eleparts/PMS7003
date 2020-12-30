@@ -53,14 +53,14 @@ ser = serial.Serial(SERIAL_PORT, Speed, timeout = 1)
 buffer = ser.read(1024)
 
 if(dust.protocol_chk(buffer)):
-  data = dust.unpack_data(buffer)
+    data = dust.unpack_data(buffer)
 
-  print ("PMS 7003 dust data")
-  print ("PM 1.0 : %s" % (data[dust.DUST_PM1_0_ATM]))
-  print ("PM 2.5 : %s" % (data[dust.DUST_PM2_5_ATM]))
-  print ("PM 10.0 : %s" % (data[dust.DUST_PM10_0_ATM]))
+    print ("PMS 7003 dust data")
+    print ("PM 1.0 : %s" % (data[dust.DUST_PM1_0_ATM]))
+    print ("PM 2.5 : %s" % (data[dust.DUST_PM2_5_ATM]))
+    print ("PM 10.0 : %s" % (data[dust.DUST_PM10_0_ATM]))
 
 else:
-  print ("data read Err")
+    print ("data read Err")
 
 ser.close()
