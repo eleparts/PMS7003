@@ -61,7 +61,7 @@ class PMS7003(object):
 
         # data unpack (Byte -> Tuple (30 x unsigned char <B> + unsigned short <H>))
         chksum_data = struct.unpack('!30BH', buffer)
-        
+
         chksum = 0
 
         for i in range(30):
@@ -178,7 +178,7 @@ if __name__=='__main__':
             
         else:
 
-            print("DATA read fail...")     
+            print("DATA read fail...")
 
 
     ser.close()
